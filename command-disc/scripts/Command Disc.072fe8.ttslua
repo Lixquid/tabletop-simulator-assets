@@ -218,7 +218,7 @@ commands.highlight = {
     end
 }
 
-commands.blindfold = {
+commands.blind = {
     description = "Blindfolds targeted players.",
     usage = "<targets>",
     admin = true,
@@ -232,7 +232,7 @@ commands.blindfold = {
         for _, v in next, targets do
             v.blindfolded = true
         end
-        broadcastToAll(CM .. playerStr(args.player) .. " has blindfolded " .. (
+        broadcastToAll(CM .. playerStr(args.player) .. " has blinded " .. (
             args[1] == "*" and "everyone seated" or
             args[1] == "*!" and "everyone" or
             #targets == 1 and targets[1] == args.player and "themselves" or
@@ -241,7 +241,7 @@ commands.blindfold = {
     end
 }
 
-commands.unblindfold = {
+commands.unblind = {
     description = "Removes blindfolds from targeted players.",
     usage = "<targets>",
     admin = true,
@@ -255,7 +255,7 @@ commands.unblindfold = {
         for _, v in next, targets do
             v.blindfolded = false
         end
-        broadcastToAll(CM .. playerStr(args.player) .. " has un-blindfolded " .. (
+        broadcastToAll(CM .. playerStr(args.player) .. " has un-blinded " .. (
             args[1] == "*" and "everyone seated" or
             args[1] == "*!" and "everyone" or
             #targets == 1 and targets[1] == args.player and "themselves" or
@@ -350,7 +350,9 @@ commands.lighting = {
             args.player.print(CM .. "Saving lighting mode " .. args[2] .. ".")
             return
         elseif args[1] == "list" then
-            args.player.print(CM .. "Lighting modes: " .. table.concat(filter(lighting_cache, function(_, k) return k end), ", "))
+            local keys = {}
+            for k in next, lighting_cache do table.insert(keys, k) end
+            args.player.print(CM .. "Lighting modes: " .. table.concat(keys, ", "))
             return
         elseif args[1] == "clear" then
             lighting_cache = {}
