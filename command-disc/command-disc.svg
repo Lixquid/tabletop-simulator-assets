@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 4.2333333 4.2333333"
+   height="16"
+   width="16">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1">
+    <path
+       d="m 4.2333331,2.1166666 -1.0583333,1.833087 -2.1166665,0 L 0,2.1166666 1.0583333,0.28357955 l 2.1166665,0 z"
+       id="path868"
+       style="opacity:1;fill:#333333;fill-opacity:1;stroke:#eeeeee;stroke-width:0.264583;stroke-linecap:round;stroke-opacity:1" />
+  </g>
+  <path
+     id="path867"
+     d="M 2.4473958,2.8442706 C 2.4473958,3.026635 2.2990308,3.175 2.1166664,3.175 1.9343025,3.175 1.7859375,3.026635 1.7859375,2.8442706 c 0,-0.1823639 0.148365,-0.3307289 0.3307289,-0.3307289 0.1823644,0 0.3307294,0.148365 0.3307294,0.3307289 z m -0.6231765,-1.6817617 0.056224,1.124479 c 0.00264,0.052805 0.046224,0.094262 0.099095,0.094262 h 0.2742569 c 0.052871,0 0.096453,-0.041455 0.099095,-0.094262 L 2.409114,1.1625089 C 2.4119483,1.1058343 2.3667649,1.0583333 2.3100193,1.0583333 H 1.923314 c -0.056745,0 -0.1019266,0.047501 -0.099095,0.1041756 z"
+     fill="currentColor"
+     style="stroke-width:0.00413411;fill:#444444;fill-opacity:1" />
+  <text
+     id="text842"
+     y="1.8834705"
+     x="2.12571"
+     style="font-style:normal;font-weight:normal;font-size:0.529167px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#eeeeee;fill-opacity:1;stroke:none;stroke-width:0.264583"
+     xml:space="preserve"><tspan
+       dy="0.2"
+       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583"
+       y="1.8834705"
+       x="2.12571"
+       id="tspan840">Command</tspan><tspan
+       id="tspan844"
+       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583"
+       y="2.5449295"
+       x="2.12571">Disc</tspan></text>
+</svg>
