@@ -6,6 +6,8 @@ ________________________________________________________________________________
 
 The Command Disc is an administration tool containing useful commands activated by chat. Dangerous commands are host / promoted only to prevent abuse.
 
+A list of commands can be obtained by typing [b]!help[/b] in chat.
+
 Available commands:
 [list]
   [*][b]Random[/b]: Roll a dice, or select a random player.
