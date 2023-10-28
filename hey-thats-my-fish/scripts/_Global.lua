@@ -78,18 +78,17 @@ local TILE_DELTA_Z = -1.65
 --- Destroys everything inside of a bag.
 --- @param bag ObjectInstance The bag to empty.
 local function emptyBag(bag)
-    if not bag then return end
     for _, v in next, bag.getObjects() do
         bag.takeObject({
             position = { 0, -5, 0 },
             smooth = false,
             guid = v.guid,
-            callback_function = destroyObject
+            callback_function = function(o) destroyObject(o) end
         })
     end
 end
 
-local function buildTiles()
+function buildTiles()
     -- Cleanup
     for _, o in next, getObjects() do
         local name = o.getName()
@@ -153,6 +152,10 @@ function onLoad()
     COUNTER_YELLOW = getObjectFromGUID("6eae90") --[[@as ObjectInstance]]
     COUNTER_GREEN = getObjectFromGUID("46d089") --[[@as ObjectInstance]]
     COUNTER_BLUE = getObjectFromGUID("5e84db") --[[@as ObjectInstance]]
+    if not BAG_RED or not BAG_YELLOW or not BAG_GREEN or not BAG_BLUE or not COUNTER_RED or not COUNTER_YELLOW or not COUNTER_GREEN or not COUNTER_BLUE then
+        broadcastToAll("Error: Could not find all objects. Please reset the game.", { 1, 0, 0 })
+        return
+    end
     buildTiles()
 end
 
