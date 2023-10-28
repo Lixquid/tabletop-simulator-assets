@@ -1,10 +1,16 @@
---[[----------------------------------------------------------------------------
+--[[
 -- Command Disc
 -- Script, Art Assets by Lixquid
---]]----------------------------------------------------------------------------
+--]]
+
+--- @alias FnArgs {[number]: string, raw: string, player: PlayerInstance}
 
 -- Util ------------------------------------------------------------------------
 
+--- Splits a string into a table of strings, using the given pattern.
+--- @param str string The string to split.
+--- @param pattern string The Lua pattern to split on.
+--- @return string[]
 local function splitString(str, pattern)
     local t = {}
     for s in string.gmatch(str, pattern) do
@@ -12,6 +18,12 @@ local function splitString(str, pattern)
     end
     return t
 end
+--- Returns a new table with the results of calling the given function on every
+--- element in the given table.
+--- @generic TKey, TValue, TReturn
+--- @param tbl table<TKey, TValue> The table to map.
+--- @param fn fun(value: TValue, key: TKey): TReturn The function to call on each element.
+--- @return table<TKey, TReturn>
 local function map(tbl, fn)
     local out = {}
     for k, v in next, tbl do
@@ -19,6 +31,13 @@ local function map(tbl, fn)
     end
     return out
 end
+--- Returns a new table with the elements from the given table that pass the
+--- given function. The element is included if the function returns anything
+--- other than false or nil.
+--- @generic TKey, TValue
+--- @param tbl table<TKey, TValue> The table to filter.
+--- @param fn fun(value: TValue, key: TKey): any The function to call on each element.
+--- @return table<TKey, TValue>
 local function filter(tbl, fn)
     local out = {}
     for k, v in next, tbl do
@@ -26,6 +45,8 @@ local function filter(tbl, fn)
     end
     return out
 end
+--- A map of player colors to their chat formatting tags.
+--- @type table<PlayerColor, string>
 local playerColors = {
     White = "[ffffff]",
     Brown = "[703a16]",
@@ -40,6 +61,8 @@ local playerColors = {
     Grey = "[7f7f7f]",
     Black = "[3f3f3f]"
 }
+--- A set of player teams.
+--- @type table<PlayerTeam, PlayerTeam>
 local playerTeams = {
     None = "None",
     Clubs = "Clubs",
@@ -48,9 +71,16 @@ local playerTeams = {
     Spades = "Spades",
     Jokers = "Jokers"
 }
+--- Returns the chat-formatted string for the given player.
+--- @param player PlayerInstance
+--- @return string
 local function playerStr(player)
     return playerColors[player.color] .. (player.steam_name or player.color) .. "[-]"
 end
+--- Returns a table of players depending on the search string.
+--- @param str string The search string.
+--- @param ply PlayerInstance The player that invoked the command.
+--- @return PlayerInstance[]
 local function getTargets(str, ply)
     if not str then
         return {}
@@ -65,11 +95,11 @@ local function getTargets(str, ply)
     end
     if str == "^" then
         -- Yourself
-        return {ply}
+        return { ply }
     end
     if playerColors[str] then
         -- A player colour
-        return {Player[str]}
+        return { Player[str] }
     end
     if playerTeams[str] then
         -- A team
@@ -78,7 +108,7 @@ local function getTargets(str, ply)
     for _, v in next, Player.getPlayers() do
         -- SteamID
         if string.lower(v.steam_id) == string.lower(str) then
-            return {v}
+            return { v }
         end
     end
     local out = filter(Player.getPlayers(), function(p)
@@ -109,13 +139,14 @@ local CM = "[2C72C7]" .. string.char(9654) .. "[-] "
 --     For example: "add <player> [id]"
 -- admin: boolean, Optional
 --     If true, only promoted players or the host can run this command.
+--- @type table<string, {fn: fun(args: FnArgs), description: string?, usage: string?, admin: boolean?}>
 local commands = {}
 
 commands.help = {
     name = "help",
     description = "Displays all available commands and their usage.",
     fn = function(args)
-        local s = {"\n", CM, "[b][6193CF]Command Disc Commands[-][/b]\n"}
+        local s = { "\n", CM, "[b][6193CF]Command Disc Commands[-][/b]\n" }
         for name, c in next, commands do
             if c.admin then table.insert(s, "[E85752]" .. string.char(9733) .. "[-]") end
             table.insert(s, "[F29B68]!" .. name .. "[-]")
@@ -166,10 +197,11 @@ player!: Outputs a random player from everyone in the game, including spectators
             local rolls = {}
             local sum = 0
             for i = 1, dNum do
-                table.insert(rolls, math.random(dMax))
+                table.insert(rolls, math.random(dMax --[[@as number]]))
                 sum = sum + rolls[#rolls]
             end
-            broadcastToAll(CM .. playerStr(args.player) .. " rolled [A4C0E4]" .. dNum .. "d" .. dMax .. "[-]: [F2BB88]" ..
+            broadcastToAll(CM ..
+                playerStr(args.player) .. " rolled [A4C0E4]" .. dNum .. "d" .. dMax .. "[-]: [F2BB88]" ..
                 (#rolls > 1 and table.concat(rolls, ", ") .. " = " or "") ..
                 sum .. "[-]"
             )
@@ -275,17 +307,22 @@ commands.changecolor = {
             return
         end
         if #targets > 1 then
-            args.player.print(CM .. "[E85752]Multiple targest found. Run !help for help on this command![-]\n")
+            args.player.print(CM .. "[E85752]Multiple targets found. Run !help for help on this command![-]\n")
             return
         end
 
         if not playerColors[args[2]] then
-            args.player.print(CM .. "[E85752]" .. tostring(args[2]) .. " is not a valid color. Valid colors: White, Brown, Red, Orange, Yellow, Green, Teal, Blue, Purple, Pink, Grey, Black[-]\n")
+            args.player.print(CM ..
+                "[E85752]" ..
+                tostring(args[2]) ..
+                " is not a valid color. Valid colors: White, Brown, Red, Orange, Yellow, Green, Teal, Blue, Purple, Pink, Grey, Black[-]\n")
             return
         end
 
         targets[1].changeColor(args[2])
-        broadcastToAll(CM .. playerStr(args.player) .. " changed " .. playerStr(targets[1]) .. "'s color to " .. playerColors[args[2]] .. args[2] .. "[-].")
+        broadcastToAll(CM ..
+            playerStr(args.player) ..
+            " changed " .. playerStr(targets[1]) .. "'s color to " .. playerColors[args[2]] .. args[2] .. "[-].")
     end
 }
 
@@ -301,11 +338,15 @@ commands.changeteam = {
         end
 
         if not playerTeams[args[2]] then
-            args.player.print(CM .. "[E85752]" .. tostring(args[2]) .. " is not a valid team. Valid teams: None, Clubs, Diamonds, Hearts, Spades, Jokers[-]\n")
+            args.player.print(CM ..
+                "[E85752]" ..
+                tostring(args[2]) ..
+                " is not a valid team. Valid teams: None, Clubs, Diamonds, Hearts, Spades, Jokers[-]\n")
         end
 
         targets[1].team = args[2]
-        broadcastToAll(CM .. playerStr(args.player) .. " changed " .. playerStr(targets[1]) .. "'s team to " .. args[2] .. ".")
+        broadcastToAll(CM ..
+            playerStr(args.player) .. " changed " .. playerStr(targets[1]) .. "'s team to " .. args[2] .. ".")
     end
 }
 
@@ -317,7 +358,8 @@ commands.lighting = {
     fn = function(args)
         if args[1] == "load" or args[1] == "l" then
             if not lighting_cache[args[2]] then
-                args.player.print(CM .. "[E85752]No lighting mode exists with that name. Run !help for help on this command![-]\n")
+                args.player.print(CM ..
+                    "[E85752]No lighting mode exists with that name. Run !help for help on this command![-]\n")
                 return
             end
             local m = lighting_cache[args[2]]
@@ -368,6 +410,7 @@ commands.lighting = {
 
 function onChat(raw, player)
     if string.sub(raw, 1, 1) ~= "!" then return end
+    --- @type FnArgs
     local args = splitString(raw, "%S+")
     local commandName = string.sub(args[1], 2)
     table.remove(args, 1)
