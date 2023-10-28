@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
    id="svg8"
    version="1.1"
    viewBox="0 0 4.2333333 4.2333333"
    height="16"
-   width="16">
+   width="16"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <metadata
@@ -20,7 +20,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,15 +39,15 @@
      id="text842"
      y="1.8834705"
      x="2.12571"
-     style="font-style:normal;font-weight:normal;font-size:0.529167px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#eeeeee;fill-opacity:1;stroke:none;stroke-width:0.264583"
-     xml:space="preserve"><tspan
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:0.529167px;line-height:1.25;font-family:'Open Sans';letter-spacing:0px;word-spacing:0px;fill:#eeeeee;fill-opacity:1;stroke:none;stroke-width:0.264583;-inkscape-font-specification:'Open Sans';font-stretch:normal;font-variant:normal"><tspan
        dy="0.2"
-       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583"
        y="1.8834705"
        x="2.12571"
-       id="tspan840">Command</tspan><tspan
+       id="tspan840"
+       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Command</tspan><tspan
        id="tspan844"
-       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583"
        y="2.5449295"
-       x="2.12571">Disc</tspan></text>
+       x="2.12571"
+       style="text-align:center;text-anchor:middle;fill:#eeeeee;fill-opacity:1;stroke-width:0.264583;-inkscape-font-specification:'Open Sans';font-family:'Open Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">Disc</tspan></text>
 </svg>
