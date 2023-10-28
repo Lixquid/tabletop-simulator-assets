@@ -92,7 +92,7 @@ end
 
 local function buildTiles()
     -- Cleanup
-    for _, o in next, getAllObjects() do
+    for _, o in next, getObjects() do
         local name = o.getName()
         if name == "1 fish" or name == "2 fish" or name == "3 fish" then
             destroyObject(o)
