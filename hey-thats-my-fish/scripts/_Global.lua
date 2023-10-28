@@ -5,7 +5,6 @@
 -- Background by https://pxhere.com/en/photo/895374, licensed under CC0 Public Domain
 -- Penguin model by https://sketchfab.com/3d-models/penguin-f65e799bf9534c66a12724a93bb72c39, licensed under CC Attribution - NoDerivs
 --]]
-----------------------------------------------------------------------------
 
 -- Objects ---------------------------------------------------------------------
 

@@ -17,3 +17,7 @@ ________________________________________________________________________________
 Background licensed under CC0: https://pxhere.com/en/photo/895374
 Penguin model licensed under CC Attribution - NoDerivs: https://sketchfab.com/3d-models/penguin-f65e799bf9534c66a12724a93bb72c39
 ```
+
+## External Assets
+
+- Rulebook: https://images-cdn.fantasyflightgames.com/ffg_content/hey-thats-my-fish-board-game/hey-thats-my-fish-rulebook.pdf
